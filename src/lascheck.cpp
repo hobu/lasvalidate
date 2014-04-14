@@ -715,7 +715,8 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
 
   if (lasinventory.is_active())
   {
-    if ((lasheader->min_x - 0.5*lasheader->x_scale_factor) > lasheader->get_x(lasinventory.min_X))
+    double fluff(2.0);
+    if ((lasheader->min_x - fluff*lasheader->x_scale_factor) > lasheader->get_x(lasinventory.min_X))
     {
       CHAR string1[64], string2[64];
       lidardouble2string(string1, lasheader->get_x(lasinventory.min_X), lasheader->x_scale_factor);
@@ -723,7 +724,7 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       sprintf(note, "should be %s and not %s", string1, string2);
       lasheader->add_fail("min x", note);
     }
-    if ((lasheader->max_x + 0.5*lasheader->x_scale_factor) < lasheader->get_x(lasinventory.max_X))
+    if ((lasheader->max_x + fluff*lasheader->x_scale_factor) < lasheader->get_x(lasinventory.max_X))
     {
       CHAR string1[64], string2[64];
       lidardouble2string(string1, lasheader->get_x(lasinventory.max_X), lasheader->x_scale_factor);
@@ -731,7 +732,7 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       sprintf(note, "should be %s and not %s", string1, string2);
       lasheader->add_fail("max x", note);
     }
-    if ((lasheader->min_y - 0.5*lasheader->y_scale_factor) > lasheader->get_y(lasinventory.min_Y))
+    if ((lasheader->min_y - fluff*lasheader->y_scale_factor) > lasheader->get_y(lasinventory.min_Y))
     {
       CHAR string1[64], string2[64];
       lidardouble2string(string1, lasheader->get_y(lasinventory.min_Y), lasheader->y_scale_factor);
@@ -739,7 +740,7 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       sprintf(note, "should be %s and not %s", string1, string2);
       lasheader->add_fail("min y", note);
     }
-    if ((lasheader->max_y + 0.5*lasheader->y_scale_factor) < lasheader->get_y(lasinventory.max_Y))
+    if ((lasheader->max_y + fluff*lasheader->y_scale_factor) < lasheader->get_y(lasinventory.max_Y))
     {
       CHAR string1[64], string2[64];
       lidardouble2string(string1, lasheader->get_y(lasinventory.max_Y), lasheader->y_scale_factor);
@@ -747,7 +748,7 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       sprintf(note, "should be %s and not %s", string1, string2);
       lasheader->add_fail("max y", note);
     }
-    if ((lasheader->min_z - 0.5*lasheader->z_scale_factor) > lasheader->get_z(lasinventory.min_Z))
+    if ((lasheader->min_z - fluff*lasheader->z_scale_factor) > lasheader->get_z(lasinventory.min_Z))
     {
       CHAR string1[64], string2[64];
       lidardouble2string(string1, lasheader->get_z(lasinventory.min_Z), lasheader->z_scale_factor);
@@ -755,7 +756,7 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       sprintf(note, "should be %s and not %s", string1, string2);
       lasheader->add_fail("min z", note);
     }
-    if ((lasheader->max_z + 0.5*lasheader->z_scale_factor) < lasheader->get_z(lasinventory.max_Z))
+    if ((lasheader->max_z + fluff*lasheader->z_scale_factor) < lasheader->get_z(lasinventory.max_Z))
     {
       CHAR string1[64], string2[64];
       lidardouble2string(string1, lasheader->get_z(lasinventory.max_Z), lasheader->z_scale_factor);
@@ -986,12 +987,12 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
 
 LAScheck::LAScheck(const LASheader* lasheader)
 {
-  min_x = lasheader->min_x - lasheader->x_scale_factor;
-  min_y = lasheader->min_y - lasheader->y_scale_factor;
-  min_z = lasheader->min_z - lasheader->z_scale_factor;
-  max_x = lasheader->max_x + lasheader->x_scale_factor;
-  max_y = lasheader->max_y + lasheader->y_scale_factor;
-  max_z = lasheader->max_z + lasheader->z_scale_factor;
+  min_x = lasheader->min_x - 2.0*lasheader->x_scale_factor;
+  min_y = lasheader->min_y - 2.0*lasheader->y_scale_factor;
+  min_z = lasheader->min_z - 2.0*lasheader->z_scale_factor;
+  max_x = lasheader->max_x + 2.0*lasheader->x_scale_factor;
+  max_y = lasheader->max_y + 2.0*lasheader->y_scale_factor;
+  max_z = lasheader->max_z + 2.0*lasheader->z_scale_factor;
   points_outside_bounding_box = 0;
 }
 
