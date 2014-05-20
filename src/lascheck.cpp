@@ -598,7 +598,6 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
     lasheader->add_fail("z scale factor", note);
   }
 
-
   if (F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.01, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.001, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.1, 0.0000001) &&
@@ -613,11 +612,19 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.0025, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.00025, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.000025, 0.0000001) &&
-      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.0000025, 0.0000001))
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.0000025, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.5, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.05, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.0005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.00005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.000005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.0000005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->x_scale_factor, 0.00000005, 0.0000001))
   {
     CHAR string[256];
     lidardouble2string(string, lasheader->x_scale_factor);
-    sprintf(note, "should be factor ten of 0.1 or 0.25 and not %s", string);
+    sprintf(note, "should be factor ten of 0.1 or 0.5 or 0.25 and not %s", string);
     lasheader->add_warning("x scale factor", note);
   }
 
@@ -635,11 +642,19 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.0025, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.00025, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.000025, 0.0000001) &&
-      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.0000025, 0.0000001))
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.0000025, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.5, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.05, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.0005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.00005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.000005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.0000005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->y_scale_factor, 0.00000005, 0.0000001))
   {
     CHAR string[256];
     lidardouble2string(string, lasheader->y_scale_factor);
-    sprintf(note, "should be factor ten of 0.1 or 0.25 and not %s", string);
+    sprintf(note, "should be factor ten of 0.1 or 0.5 or 0.25 and not %s", string);
     lasheader->add_warning("y scale factor", note);
   }
   if (F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.01, 0.0000001) &&
@@ -656,12 +671,58 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
       F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.0025, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.00025, 0.0000001) &&
       F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.000025, 0.0000001) &&
-      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.0000025, 0.0000001))
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.0000025, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.5, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.05, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.0005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.00005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.000005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.0000005, 0.0000001) &&
+      F64_NOT_CLOSE_POSITIVE(lasheader->z_scale_factor, 0.00000005, 0.0000001))
   {
     CHAR string[256];
     lidardouble2string(string, lasheader->z_scale_factor);
-    sprintf(note, "should be factor ten of 0.1 or 0.25 and not %s", string);
+    sprintf(note, "should be factor ten of 0.1 or 0.5 or 0.25 and not %s", string);
     lasheader->add_warning("z scale factor", note);
+  }
+
+  // check offset x y z
+
+  I64 x_offset_quantized = I64_QUANTIZE(lasheader->x_offset/lasheader->x_scale_factor);
+  F64 x_offset = lasheader->x_scale_factor * x_offset_quantized;
+  if (F64_NOT_CLOSE_POSITIVE(lasheader->x_offset - x_offset, 0.0, 0.0000001))
+  {
+    CHAR string1[256];
+    lidardouble2string(string1, lasheader->x_offset);
+    CHAR string2[256];
+    lidardouble2string(string2, lasheader->x_scale_factor);
+    sprintf(note, "translation fluff: decimal digits of %s do not match scale factor %s", string1, string2);
+    lasheader->add_warning("x offset", note);
+  }
+
+  I64 y_offset_quantized = I64_QUANTIZE(lasheader->y_offset/lasheader->y_scale_factor);
+  F64 y_offset = lasheader->y_scale_factor * y_offset_quantized;
+  if (F64_NOT_CLOSE_POSITIVE(lasheader->y_offset - y_offset, 0.0, 0.0000001))
+  {
+    CHAR string1[256];
+    lidardouble2string(string1, lasheader->y_offset);
+    CHAR string2[256];
+    lidardouble2string(string2, lasheader->y_scale_factor);
+    sprintf(note, "translation fluff: decimal digits of %s do not match scale factor %s", string1, string2);
+    lasheader->add_warning("y offset", note);
+  }
+
+  I64 z_offset_quantized = I64_QUANTIZE(lasheader->z_offset/lasheader->z_scale_factor);
+  F64 z_offset = lasheader->z_scale_factor * z_offset_quantized;
+  if (F64_NOT_CLOSE_POSITIVE(lasheader->z_offset - z_offset, 0.0, 0.0000001))
+  {
+    CHAR string1[256];
+    lidardouble2string(string1, lasheader->z_offset);
+    CHAR string2[256];
+    lidardouble2string(string2, lasheader->z_scale_factor);
+    sprintf(note, "translation fluff: decimal digits of %s do not match scale factor %s", string1, string2);
+    lasheader->add_warning("z offset", note);
   }
 
   // check global encoding 
@@ -958,7 +1019,6 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
     }
   }
 
-
   if (lasheader->point_data_format <= 5)
   {
     // a GEOTIFF tag CRS must be there when the point type is 5 or lower
@@ -975,6 +1035,29 @@ void LAScheck::check(LASheader* lasheader, CHAR* crsdescription)
     {
       sprintf(note, "file with point data format %d does not specify Coordinate Reference System with OGC WKT string", lasheader->point_data_format);
       lasheader->add_fail("CRS", note);
+    }
+  }
+
+  // check for wrong wave packet indices
+
+  if ((lasheader->point_data_format == 4) || (lasheader->point_data_format == 5) || (lasheader->point_data_format == 9) || (lasheader->point_data_format == 10))
+  {
+    U16 index;
+    for (index = 1; index < 256; index++)
+    {
+      if (lasinventory.has_wave_packet_index((U8)index))
+      {
+        if (lasheader->wave_packet_descriptor == 0)
+        {
+          sprintf(note, "points reference wave packet descriptor with index %u that does not exist", index);
+          lasheader->add_fail("wave packet descriptor", note);
+        }
+        else if (lasheader->wave_packet_descriptor[index] == 0)
+        {
+          sprintf(note, "points reference wave packet descriptor with index %u that does not exist", index);
+          lasheader->add_fail("wave packet", note);
+        }
+      }
     }
   }
 
